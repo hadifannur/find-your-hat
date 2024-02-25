@@ -57,4 +57,29 @@ module.exports = class Field {
             console.log(line.join(' '));
         }
     }
+
+    static generateField(height, width, percentage) {
+        let array = [];
+
+        for ( let x = 0; x < height; x++) {
+            let result = '';
+
+            for ( let i = 0; i < width; i++ ) {
+                percentage = Math.floor(percentage);
+                let num = Math.floor(Math.random() * 100);
+                if (num < percentage) {
+                    result += hole;
+                } else {
+                    result += fieldCharacter;
+                }
+            }
+
+            array.push(result.split(''));
+        }
+
+        array[0][0] = pathCharacter;
+        array[Math.floor(Math.random() * height)][Math.floor(Math.random() * width)] = hat;
+
+        return array;
+    }
 }

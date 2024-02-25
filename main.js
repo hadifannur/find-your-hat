@@ -2,11 +2,7 @@ const prompt = require('prompt-sync')({sigint: true});
 const Field = require('./field.js');
 
 // Create instance of a field.
-const myField = new Field([
-    ['*', '░', 'O'],
-    ['░', 'O', '░'],
-    ['░', '^', '░'],
-]);
+const myField = new Field(Field.generateField(13,5,20));
 
 // Process user input
 const move = input => {
