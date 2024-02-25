@@ -1,6 +1,20 @@
 const prompt = require('prompt-sync')({sigint: true});
+const Field = require('./field.js');
 
-const hat = '^';
-const hole = 'O';
-const fieldCharacter = '░';
-const pathCharacter = '*';
+// Create instance of a field.
+const myField = new Field([
+    ['*', '░', 'O'],
+    ['░', 'O', '░'],
+    ['░', '^', '░'],
+]);
+
+// Process user input
+const move = input => {
+    input = input.toString().trim();
+    myField.playerPosition = input;
+    process.stdout.write('Which way? ');
+}
+
+myField.print();
+process.stdout.write('Which way? ');
+process.stdin.on('data', move);
